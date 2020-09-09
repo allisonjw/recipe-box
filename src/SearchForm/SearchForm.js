@@ -22,19 +22,20 @@ export const SearchForm = () => {
     return (
         <section>
             <form className="form" onSubmit={searchApi}>
-            <label className="label" htmlFor="query">Enter a Recipe Name or Ingredient</label>
-            <input className="input" type="text" name="query"
+              <label className="label" htmlFor="query">Enter a Recipe Name or Ingredient</label>
+              <input className="input" type="text" name="query"
                 placeholder="i.e. Lasagna"
                 value={query} onChange={(e) => setQuery(e.target.value)}
                 />
-            <button className="button" type="submit">Search</button>
-        </form>
+              <button className="button" type="submit">Search</button>
+           </form>
         <div className="recipe-list" aria-label="list of recipes to match search">
         {recipes.map(recipe => (
             <div className="recipe" key={recipe.id} aria-label="detailed information about recipe">
+                <input type="checkbox" className="recipe--favorite"></input>
                 <img className="recipe--image"
                     src={recipe.image}
-                    alt={recipe.title}
+                    // alt={recipe.title}
                 />
                 <div className="recipe--content">
                   <h3 className="recipe--title">{recipe.title}</h3>
