@@ -31,6 +31,22 @@ console.log('fun', recipes)
                 />
             <button className="button" type="submit">Search</button>
         </form>
+        <div className="recipe-list">
+        {recipes.map(recipe => (
+            <div className="recipe" key={recipe.id}>
+                <img className="recipe--image"
+                    src={recipe.img}
+                    alt={recipe.title}
+                    />
+                <div className="recipe--content">
+                <h3 className="recipe--title">{recipe.title}</h3>
+                <p>Cook Time: {recipe.readyInMinutes}</p>
+                <p>Servings: {recipe.servings}</p>
+                <p className="recipe--desc">Link:{recipe.sourceUrl}</p>
+                </div>
+            </div>
+        ))}
+    </div> 
         </section>
     )
 }
