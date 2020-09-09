@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import './SearchForm.css';
+import './SearchForm.scss';
 import { getSearchApi } from '../apiCall';
 
 export const SearchForm = () => {
