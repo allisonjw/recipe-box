@@ -15,8 +15,6 @@ export const SearchForm = () => {
         console.log(error);
     }
 }
-console.log('fun', recipes)
-
     // useEffect(() => {
     //   searchApi();
     // }, []);
@@ -24,25 +22,32 @@ console.log('fun', recipes)
     return (
         <section>
             <form className="form" onSubmit={searchApi}>
-            <label className="label" htmlFor="query">Recipe Name or Ingredient</label>
+            <label className="label" htmlFor="query">Enter a Recipe Name or Ingredient</label>
             <input className="input" type="text" name="query"
                 placeholder="i.e. Lasagna"
                 value={query} onChange={(e) => setQuery(e.target.value)}
                 />
             <button className="button" type="submit">Search</button>
         </form>
-        <div className="recipe-list">
+        <div className="recipe-list" aria-label="list of recipes to match search">
         {recipes.map(recipe => (
-            <div className="recipe" key={recipe.id}>
+            <div className="recipe" key={recipe.id} aria-label="detailed information about recipe">
                 <img className="recipe--image"
-                    src={recipe.img}
+                    src={recipe.image}
                     alt={recipe.title}
-                    />
+                />
                 <div className="recipe--content">
-                <h3 className="recipe--title">{recipe.title}</h3>
-                <p>Cook Time: {recipe.readyInMinutes}</p>
-                <p>Servings: {recipe.servings}</p>
-                <p className="recipe--desc">Link:{recipe.sourceUrl}</p>
+                  <h3 className="recipe--title">{recipe.title}</h3>
+                  <p>Cook Time: {recipe.readyInMinutes}</p>
+                  <p>Servings: {recipe.servings}</p>
+                  <a 
+                    href={recipe.sourceUrl} 
+                    aria-label="link to recipe"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="recipe--desc">
+                      Link to Recipe
+                  </a>
                 </div>
             </div>
         ))}
