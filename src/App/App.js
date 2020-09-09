@@ -1,11 +1,9 @@
 import React from 'react';
-import logo from './mintbean.png';
-import './styles/index.css';
+import '../styles/index.css';
 
-function App() {
+export const App = () => {
   return (
     <div className="App">
-        <img src={logo} className="App-logo" alt="logo" />
         <p>
           <code>App.js</code> is the entrypoint to your app.
         </p>
