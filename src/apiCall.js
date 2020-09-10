@@ -7,6 +7,6 @@ export const getSearchApi = async (query) => {
       throw Error('Error searching for the recipe');
     }
     const data = await response.json();
-    console.log('apicall', data)
+    console.log('apicall', data.results)
     return data
 };
