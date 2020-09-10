@@ -10,7 +10,7 @@ export const SearchForm = () => {
   const dispatch = useDispatch();
   const [recipe, setRecipes] = useState([]);
   const [query, setQuery] = useState(' ');
-  const [favorite, setFavorites] = useState({})
+  const [favorite, setFavorites] = useState([])
 //   const recipes = useSelector(state => state.recipes)
 
   const searchApi = async (e) => {
@@ -28,47 +28,48 @@ export const SearchForm = () => {
     //   searchApi();
     // }, []);
 
-      const addRecipe = (e) => {
-          e.preventDefault();
-          setFavorites([...favorite, favorite]);
+      const addRecipe = () => {
+        //   e.preventDefault();
+          setFavorites(favorite);
+          dispatch(addFavorite(favorite))
       }
     
     return (
         <>
         <KeyMap>
-            <form className="form" onSubmit={searchApi}>
+            <form className="searchForm" onSubmit={searchApi}>
               <label className="label" htmlFor="query">Enter a Recipe Name or Ingredient</label>
               <input className="input" type="text" name="query"
                 placeholder="i.e. Lasagna"
                 value={query} onChange={(e) => setQuery(e.target.value)}
                 />
-              <button className="button" type="submit">Search</button>
+              <button className="search_button" type="submit">Search</button>
            </form>
-        <div className="recipe-list" aria-label="list of recipes to match search">
+        <div className="recipe_list" aria-label="list of recipes to match search">
         {recipe.map((recipe, index) => (
             <HotKeys handlers={{ ENTER: () => addRecipe(index) }} key={index}>
             <div className="recipe" key={recipe.id} aria-label="detailed information about recipe">
                 <img 
                     src={recipe.image}
                     // alt="prepared food from recipe"
-                    className="recipe--image">
+                    className="recipe_image">
                 </img>
-                <div className="recipe--content">
-                  <h3 className="recipe--title">{recipe.title}</h3>
-                  <p className="recipe--info">Cook Time: {recipe.readyInMinutes}</p>
-                  <p className="recipe--info">Servings: {recipe.servings}</p>
+                <div className="recipe_content">
+                  <h3 className="recipe_title">{recipe.title}</h3>
+                  <p className="recipe_info">Cook Time: {recipe.readyInMinutes}</p>
+                  <p className="recipe_info">Servings: {recipe.servings}</p>
                   <a 
                     href={recipe.sourceUrl} 
                     aria-label="link to recipe"
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="recipe--info">
+                    className="recipe_info">
                       Link to Recipe
                   </a>
                   <button 
-                    onClick={(e) => addRecipe(e, index)}
+                    onClick={() => addRecipe(index)}
                     // onSubmit={(e) => addRecipe(e)}
-                    className="recipe--favorite">
+                    className="recipe_favorite">
                         Favorite
                    </button>
                 </div>

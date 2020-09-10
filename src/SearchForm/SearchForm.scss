@@ -1,8 +1,10 @@
-.form {
+.searchForm {
     display:grid;
     grid-template-columns: auto 1fr auto;
     grid-gap: 1rem;
     align-items: center;
+    margin-top: 7%;
+    padding: 2%;
 }
 
 .label {
@@ -20,7 +22,7 @@
     margin-bottom: 1rem;
 }
 
-.button {
+.search_button {
     background-color: rgba(0,0,0,0.75);
     color: white;
     padding: 1rem 2rem;
@@ -31,11 +33,7 @@
     transition: background-color 250ms;
 }
 
-.button:hover {
-    background-color: rgba(0,0,0,0.85);
-}
-
-.recipe-list {
+.recipe_list {
     margin-top: 4rem;
     display:grid;
     grid-template-columns: repeat(auto-fit, minmax(280px, 4fr));
@@ -53,20 +51,22 @@
     background-color: #a9a9a95c;
 }
 
-.recipe--title {
+.recipe_title {
     margin-bottom: 0.5rem;
     font-size: 1.4rem;
 }
 
-.recipe--image {
+.recipe_image {
     margin: 0 auto;
     display: block;
 }
 
-.recipe--favorite {
-    float: left;
+.recipe_favorite {
+    font-size: 1.2em;
+    margin-top: 5%;
+    padding: 2%;
 }
 
-.recipe--info {
+.recipe_info {
     font-size: 1.2em;
 }
