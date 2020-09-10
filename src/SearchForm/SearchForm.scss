@@ -38,8 +38,11 @@
 .recipe-list {
     margin-top: 4rem;
     display:grid;
-    grid-template-rows: auto 1fr auto;
-    grid-gap: 1rem;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 4fr));
+    grid-template-rows: auto;
+    grid-gap: 3%;
+    padding: 3%;
+    animation: fade-in 0.5s ease-out both 0.3s;
 }
 
 .recipe {
@@ -52,7 +55,7 @@
 
 .recipe--title {
     margin-bottom: 0.5rem;
-    font-size: 2rem;
+    font-size: 1.4rem;
 }
 
 .recipe--image {
@@ -62,4 +65,8 @@
 
 .recipe--favorite {
     float: left;
+}
+
+.recipe--info {
+    font-size: 1.2em;
 }
