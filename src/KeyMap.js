@@ -6,6 +6,6 @@ const KEY_MAP = {
     ENTER: ["return"]
 };
 
-export const KeyMap = ({ children }) => {
+export const KeyMap = ({ children }) => (
   <HotKeys keyMap={KEY_MAP}>{children}</HotKeys>
-}
+);
