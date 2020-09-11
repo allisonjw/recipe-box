@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useSelector } from 'react';
 import { useDispatch } from 'react-redux';
 import { addFavorite, addRecipes } from '../actions';
 import './SearchForm.scss';
@@ -24,10 +24,12 @@ export const SearchForm = () => {
         console.log(error);
     }
   }
+        console.log('fav', recipe.map(recipe => recipe.id))
 
-      const addRecipe = () => {
+      const addRecipe = (id) => {
+          const pickedFav = recipe.map(recipe => recipe.id).includes(recipe.id);
           setFavorites(favorite);
-          dispatch(addFavorite(favorite))
+          dispatch(addFavorite(pickedFav))
       }
     
     return (
