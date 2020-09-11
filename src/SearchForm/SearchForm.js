@@ -49,11 +49,14 @@ export const SearchForm = () => {
         {recipe.map((recipe, index) => (
             <HotKeys handlers={{ ENTER: () => addRecipe(index) }} key={index}>
             <div className="recipe" key={recipe.id} aria-label="detailed information about recipe">
+                <div className="image_holder" arial-label="side of recipe card with image">
                 <img 
                     src={recipe.image}
+                    // src={require(`${recipe.image}`)}
                     // alt="prepared food from recipe"
                     className="recipe_image">
                 </img>
+                </div>
                 <div className="recipe_content">
                   <h3 className="recipe_title">{recipe.title}</h3>
                   <p className="recipe_info">Cook Time: {recipe.readyInMinutes}</p>
