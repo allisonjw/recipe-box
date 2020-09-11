@@ -1,10 +1,10 @@
 import React from 'react';
 import './Modal.scss';
 
-const Modal = ({ children, show, setShow }) => {
+export const Modal = ({ children, show, setShow }) => {
   const content = show && (
     <div className="modal_overlay">
-      <div className="modal">
+      <div className="modal" tabIndex={1}>
         <button
           className="modal_close"
           type="modal_button"
@@ -20,4 +20,4 @@ const Modal = ({ children, show, setShow }) => {
   return content
 }
 
-export default Modal
+export default Modal;
