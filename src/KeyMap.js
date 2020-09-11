@@ -3,7 +3,7 @@ import { HotKeys } from 'react-hotkeys';
 
 const KEY_MAP = {
     DELETE: ["del", "backspace"],
-    ENTER: ["return"]
+    ENTER: ["return", "enter"]
 };
 
 export const KeyMap = ({ children }) => (
