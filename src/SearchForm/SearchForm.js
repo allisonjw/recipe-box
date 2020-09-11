@@ -5,12 +5,14 @@ import './SearchForm.scss';
 import { getSearchApi } from '../apiCall';
 import { KeyMap } from '../KeyMap';
 import { HotKeys } from 'react-hotkeys';
+import { Modal } from '../Modal/Modal';
 
 export const SearchForm = () => {
   const dispatch = useDispatch();
   const [recipe, setRecipes] = useState([]);
   const [query, setQuery] = useState(' ');
-  const [favorite, setFavorites] = useState([])
+  const [favorite, setFavorites] = useState([]);
+  const [show, setShow] = useState(false);
 //   const recipes = useSelector(state => state.recipes)
 
   const searchApi = async (e) => {
@@ -71,10 +73,14 @@ export const SearchForm = () => {
                   </a>
                   <button 
                     onClick={() => addRecipe(index)}
+                    onClick={() => setShow(true)}
                     // onSubmit={(e) => addRecipe(e)}
                     className="recipe_favorite">
                         Favorite
                    </button>
+                   <Modal show={show} setShow={setShow}>
+                        This recipe was added to your box!
+                   </Modal>
                 </div>
             </div>
             </HotKeys>
