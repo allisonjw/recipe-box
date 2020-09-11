@@ -32,7 +32,7 @@ export const SearchForm = () => {
     
     return (
         <>
-        {/* <KeyMap> */}
+        <KeyMap>
             <form className="searchForm" onSubmit={searchApi}>
               <label className="label" htmlFor="query">Enter a Recipe Name or Ingredient</label>
               <input className="input" type="text" name="query"
@@ -43,7 +43,7 @@ export const SearchForm = () => {
            </form>
         <div className="recipe_list" aria-label="list of recipes to match search">
         {recipe.map((recipe, index) => (
-            // <HotKeys handlers={{ ENTER: (e) => addRecipe(index, e) }} key={index}>
+            <HotKeys handlers={{ ENTER: (e) => addRecipe(index, e) }} key={index}>
             <div className="recipe" key={recipe.id} aria-label="detailed information about recipe">
                 <img 
                     // src={recipe.image}
@@ -75,10 +75,10 @@ export const SearchForm = () => {
                    </Modal>
                 </div>
             </div>
-            // </HotKeys>
+            </HotKeys>
         ))}
     </div> 
-        {/* </KeyMap> */}
+        </KeyMap>
         </>
     )
 }

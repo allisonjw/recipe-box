@@ -39,12 +39,6 @@
     grid-template-rows: auto;
     grid-gap: 3%;
     padding: 1%;
-    animation: fade-in 0.5s ease-out both 0.3s;
-}
-
-@keyframes fade-in {
-    from {opacity: 0%;}
-    to {opacity: 100%;}
 }
 
 .recipe {
