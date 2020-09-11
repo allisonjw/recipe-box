@@ -1,5 +1,5 @@
-import React, { useState, useEffect } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+import React, { useState } from 'react';
+import { useDispatch } from 'react-redux';
 import { addFavorite, addRecipes } from '../actions';
 import './SearchForm.scss';
 import { getSearchApi } from '../apiCall';
@@ -13,7 +13,6 @@ export const SearchForm = () => {
   const [query, setQuery] = useState(' ');
   const [favorite, setFavorites] = useState([]);
   const [show, setShow] = useState(false);
-//   const recipes = useSelector(state => state.recipes)
 
   const searchApi = async (e) => {
     e.preventDefault()
@@ -26,12 +25,7 @@ export const SearchForm = () => {
     }
   }
 
-    // useEffect(() => {
-    //   searchApi();
-    // }, []);
-
       const addRecipe = () => {
-        //   e.preventDefault();
           setFavorites(favorite);
           dispatch(addFavorite(favorite))
       }
@@ -49,16 +43,15 @@ export const SearchForm = () => {
            </form>
         <div className="recipe_list" aria-label="list of recipes to match search">
         {recipe.map((recipe, index) => (
-            <HotKeys handlers={{ ENTER: () => addRecipe(index) }} key={index}>
+            <HotKeys handlers={{ ENTER: (e) => addRecipe(index, e) }} key={index}>
             <div className="recipe" key={recipe.id} aria-label="detailed information about recipe">
-                <div className="image_holder" arial-label="side of recipe card with image">
                 <img 
-                    src={recipe.image}
+                    // src={recipe.image}
+                    src={require('../images/dish.png')}
                     // src={require(`${recipe.image}`)}
-                    // alt="prepared food from recipe"
+                    alt={recipe.title}
                     className="recipe_image">
                 </img>
-                </div>
                 <div className="recipe_content">
                   <h3 className="recipe_title">{recipe.title}</h3>
                   <p className="recipe_info">Cook Time: {recipe.readyInMinutes}</p>
@@ -74,7 +67,6 @@ export const SearchForm = () => {
                   <button 
                     onClick={() => addRecipe(index)}
                     onClick={() => setShow(true)}
-                    // onSubmit={(e) => addRecipe(e)}
                     className="recipe_favorite">
                         Favorite
                    </button>
