@@ -1,6 +1,6 @@
 import React, { useState, useSelector } from 'react';
 import { useDispatch } from 'react-redux';
-import { addFavorite, addRecipes } from '../actions';
+import { addFavorite, addRecipes, removeFavorite } from '../actions';
 import './SearchForm.scss';
 import { getSearchApi } from '../apiCall';
 import { KeyMap } from '../KeyMap';
@@ -13,21 +13,24 @@ export const SearchForm = () => {
   const [query, setQuery] = useState(' ');
   const [favorite, setFavorites] = useState([]);
   const [show, setShow] = useState(false);
+  // const recipes = useSelector(state => state.recipesReducer)
+  // const favorites = useSelector(state => state.favoriteReducer)
 
   const searchApi = async (e) => {
     e.preventDefault()
     try {
         const searchedRecipes = await getSearchApi(query);
-        setRecipes(searchedRecipes.results);
+        setRecipes(searchedRecipes);
         dispatch(addRecipes(searchedRecipes))
     } catch(error) {
         console.log(error);
     }
   }
 
-      const addRecipe = () => {
-          setFavorites(favorite);
-          dispatch(addFavorite(favorite))
+      const toggleRecipe = () => {
+        // dispatch(addFavorite(favorite));
+        setFavorites(favorite);
+          recipe.map(recipe => recipe.id).includes(recipe.id) ?dispatch(addFavorite(recipe)) : dispatch(removeFavorite(recipe));
       }
     
     return (
@@ -43,12 +46,10 @@ export const SearchForm = () => {
            </form>
         <div className="recipe_list" aria-label="list of recipes to match search">
         {recipe.map((recipe, index) => (
-            <HotKeys handlers={{ ENTER: (e) => addRecipe(index, e) }} key={index}>
+            <HotKeys handlers={{ ENTER: (e) => toggleRecipe(index, e) }} key={index}>
             <div className="recipe" key={recipe.id} aria-label="detailed information about recipe">
                 <img 
-                    // src={recipe.image}
-                    src={require('../images/dish.png')}
-                    // src={require(`${recipe.image}`)}
+                    src={recipe.image}
                     alt={recipe.title}
                     className="recipe_image">
                 </img>
@@ -65,7 +66,7 @@ export const SearchForm = () => {
                       Link to Recipe
                   </a>
                   <button 
-                    onClick={() => addRecipe(index)}
+                    onClick={() => toggleRecipe(index)}
                     onClick={() => setShow(true)}
                     className="recipe_favorite">
                         Favorite
