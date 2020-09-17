@@ -1,4 +1,4 @@
-import React, { useState, useSelector } from 'react';
+import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { addFavorite, addRecipes, removeFavorite } from '../actions';
 import './SearchForm.scss';
@@ -13,25 +13,25 @@ export const SearchForm = () => {
   const [query, setQuery] = useState(' ');
   const [favorite, setFavorites] = useState([]);
   const [show, setShow] = useState(false);
-  // const recipes = useSelector(state => state.recipesReducer)
-  // const favorites = useSelector(state => state.favoriteReducer)
 
   const searchApi = async (e) => {
     e.preventDefault()
     try {
         const searchedRecipes = await getSearchApi(query);
-        setRecipes(searchedRecipes);
         dispatch(addRecipes(searchedRecipes))
+        setRecipes(searchedRecipes);
     } catch(error) {
         console.log(error);
     }
   }
 
       const toggleRecipe = () => {
-        // dispatch(addFavorite(favorite));
-        setFavorites(favorite);
-          recipe.map(recipe => recipe.id).includes(recipe.id) ?dispatch(addFavorite(recipe)) : dispatch(removeFavorite(recipe));
+        console.log('test', recipe)
+        let favs = recipe.filter(recipe => recipe.id === recipe.id)
+        dispatch(addFavorite(favs));
+        setFavorites(favs);
       }
+
     
     return (
         <>
@@ -66,7 +66,7 @@ export const SearchForm = () => {
                       Link to Recipe
                   </a>
                   <button 
-                    onClick={() => toggleRecipe(index)}
+                    onClick={(id) => toggleRecipe(index, id)}
                     onClick={() => setShow(true)}
                     className="recipe_favorite">
                         Favorite
