@@ -8,4 +8,4 @@ Recipe box is a site built for a Mintbean Hackathon. The purpose was to somethin
 React, React Hooks, Redux, SCSS, HTML, React Hotkeys
 
 ## Live Demo
-Visit the site https://dashboard.featurepeek.com/peek/yvwhkn53#/
+Visit the site https://recipe-box-gules.vercel.app/
