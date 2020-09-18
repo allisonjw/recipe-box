@@ -9,3 +9,9 @@ React, React Hooks, Redux, SCSS, HTML, React Hotkeys
 
 ## Live Demo
 Visit the site https://recipe-box-gules.vercel.app/
+
+## Future Iterations
+- Add navbar with routing to favorites and home
+- Fix bug with favorites
+- Fix bug with recipe state 
+- Test all components
