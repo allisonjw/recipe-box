@@ -7,7 +7,7 @@ export const App = () => {
     <main className="App">
         <h1>The Recipe Box</h1>
     <div className="paragraph_holder" aria-label="hold description of website" tabIndex={1}> 
-      <p className="app_description">We all have our favorite recipes and need them all stored somewhere easily accessible. Welcome the Recipe Box. Just like grandma used to have. Search for a recipe based on name or ingredient. If you want to add this recipe to your box, tab over to recipe card and hit enter to check the box.</p> 
+      <p className="app_description">We all have our favorite recipes and need them all stored somewhere easily accessible. Welcome the Recipe Box. Just like grandma used to have. Search for a recipe based on name or ingredient. If you want to add this recipe to your box, tab over to recipe card's favorite button and hit enter.</p> 
       <img className="recipe_img" alt="a recipe box" src={require('../images/wooden-box.png')}></img>
       <br />
     </div>
